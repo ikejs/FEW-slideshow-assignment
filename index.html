@@ -38,6 +38,17 @@
 
         <script>
             // JS Here
+            function makeSlideshow(slidesId) {
+                const slides = document.getElementById(slidesId)
+                const slidesInner = slides.querySelector('.slides-inner')
+                const images = slidesInner.querySelectorAll('img')
+
+                console.log(images)
+                console.log(images.length)
+
+            }
+
+            makeSlideshow('slides')
         </script>
     </body>
 </html>
