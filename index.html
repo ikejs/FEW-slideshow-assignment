@@ -2,21 +2,8 @@
 <html>
     <head>
         <title></title>
+        <link rel="stylesheet" href="ms-slide-show.css">
         <style>
-            .slides-inner {
-                display: flex;
-                flex-direction: row;
-                position: absolute;
-                transform: translate3d(0, 0, 0);
-                transition: 1000ms;
-            }
-
-            .slide-show {
-                overflow: hidden;
-                position: relative;
-            }
-
-            /* Dev Slides */
             #slides {
                 border: 2px solid red;
                 width: 1200px;
@@ -31,9 +18,7 @@
         </style>
     </head>
     <body>
-
-        <!-- HTML -->
-        <div id="slides" class="slide-show" data-delay="3000" data-transition="400">
+        <div id="slides" class="slide-show ms-slideshow" data-delay="3000" data-transition="400">
             <div class="slides-inner">
                 <img src="images/bee-1200-400.jpg" width="1200" height="400" alt="bee">
                 <img src="images/beetle-1200-400.jpg" width="1200" height="400" alt="beetle">
@@ -42,7 +27,7 @@
             </div>
         </div>
 
-        <div id="slides-2" class="slide-show" data-delay="4000" data-transition="2000">
+        <div id="slides-2" class="slide-show ms-slideshow" data-delay="4000" data-transition="2000">
             <div class="slides-inner">
                 <img src="images/hellebore-pollen-300-169.jpg" width="300" height="169" alt="hellebore pollen">
                 <img src="images/li-pollen-300-169.jpg" width="300" height="169" alt="li pollen">
@@ -51,36 +36,6 @@
                 <img src="images/zsa-300-169.jpg" width="300" height="169" alt="zsa">
         </div>
 
-        <script>
-            // JS Here
-            function makeSlideshow(slidesId) {
-                const slides = document.getElementById(slidesId)
-                const slidesInner = slides.querySelector('.slides-inner')
-                const images = slidesInner.querySelectorAll('img')
-
-                const delay = parseInt(slides.dataset.delay)
-                const transition = parseInt(slides.dataset.transition)
-                slidesInner.style.transition = `${transition}ms`
-
-
-                const slidesWidth = slides.clientWidth
-                let index = 0
-
-                setInterval(function() {
-                    index += 1
-                    if(index === images.length) {
-                        index = 0
-                    }
-
-                    slidesInner.style.transform = `translate3d(${index * -slidesWidth}px, 0, 0)`
-
-                }, delay)
-
-
-            }
-
-            makeSlideshow('slides')
-            makeSlideshow('slides-2')
-        </script>
+        <script src="ms-slideshow.js"></script>
     </body>
 </html>

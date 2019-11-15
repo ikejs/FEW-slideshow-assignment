@@ -1,0 +1,12 @@
+.slides-inner {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+    transition: 1000ms;
+}
+
+.slide-show {
+    overflow: hidden;
+    position: relative;
+}
