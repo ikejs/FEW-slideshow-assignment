@@ -7,7 +7,8 @@
                 display: flex;
                 flex-direction: row;
                 position: absolute;
-                transform: translate3d(-1200px, 0, 0);
+                transform: translate3d(0, 0, 0);
+                transition: 1000ms;
             }
 
             .slide-show {
@@ -43,8 +44,18 @@
                 const slidesInner = slides.querySelector('.slides-inner')
                 const images = slidesInner.querySelectorAll('img')
 
-                console.log(images)
-                console.log(images.length)
+                let index = 0
+
+                setInterval(function() {
+                    index += 1
+                    if(index === images.length) {
+                        index = 0
+                    }
+
+                    slidesInner.style.transform = `translate3d(${index * -1200}px, 0, 0)`
+
+                }, 2000)
+
 
             }
 
