@@ -4,6 +4,27 @@
         const slidesInner = slides.querySelector('.slides-inner') // block scope: makeSlideshow()
         const images = slidesInner.querySelectorAll('img') // block scope: makeSlideshow()
 
+        const nextButton = slides.querySelector('.ms-next-button')
+        const prevButton = slides.querySelector('.ms-prev-button')
+
+        if (nextButton !== null) {
+            nextButton.addEventListener('click', function(e) {
+                e.preventDefault()
+                // clear interval
+                // add interval
+                nextSlide()
+            })
+        }
+
+        if (prevButton !== null) {
+            prevButton.addEventListener('click', function(e) {
+                e.preventDefault()
+                // clear interval
+                // add interval
+                prevSlide()
+            })
+        }
+
         const delay = parseInt(slides.dataset.delay) // block scope: makeSlideshow()
         const transition = parseInt(slides.dataset.transition) // block scope: makeSlideshow()
         slidesInner.style.transition = `${transition}ms`
@@ -12,7 +33,7 @@
         const slidesWidth = slides.clientWidth // block scope: makeSlideshow()
         let index = 0 // block scope: makeSlideshow()
 
-        setInterval(nextSlide, delay)
+        let interval = setInterval(nextSlide, delay)
 
         function nextSlide() {
             index += 1

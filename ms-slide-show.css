@@ -11,7 +11,7 @@
     position: relative;
 }
 
-.ms-next-button, .ms-previous-button {
+.ms-next-button, .ms-prev-button {
     display: block;
     width: 40px;
     height: 40px;
@@ -26,6 +26,6 @@
     right: 1em;
 }
 
-.ms-previous-button {
+.ms-prev-button {
     left: 1em;
 }
