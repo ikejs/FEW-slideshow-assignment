@@ -29,3 +29,23 @@
 .ms-prev-button {
     left: 1em;
 }
+
+.ms-slide-indicators {
+    list-style: none;
+    position: absolute;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    bottom: 1em;
+    transform: translate(-50%, 0);
+}
+
+.ms-slide-indicators > li {
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5)
+
+}

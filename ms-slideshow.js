@@ -1,8 +1,11 @@
 (function() {
     function makeSlideshow(slides) {
+        const delay = parseInt(slides.dataset.delay)
+        const transition = parseInt(slides.dataset.transition)
+
         // const slides = document.getElementById(slidesId)
-        const slidesInner = slides.querySelector('.slides-inner') // block scope: makeSlideshow()
-        const images = slidesInner.querySelectorAll('img') // block scope: makeSlideshow()
+        const slidesInner = slides.querySelector('.slides-inner')
+        const images = slidesInner.querySelectorAll('img')
 
         const nextButton = slides.querySelector('.ms-next-button')
         const prevButton = slides.querySelector('.ms-prev-button')
@@ -10,8 +13,6 @@
         if (nextButton !== null) {
             nextButton.addEventListener('click', function(e) {
                 e.preventDefault()
-                // clear interval
-                // add interval
                 nextSlide()
             })
         }
@@ -19,21 +20,21 @@
         if (prevButton !== null) {
             prevButton.addEventListener('click', function(e) {
                 e.preventDefault()
-                // clear interval
-                // add interval
-                prevSlide()
+                 prevSlide()
             })
         }
 
-        const delay = parseInt(slides.dataset.delay) // block scope: makeSlideshow()
-        const transition = parseInt(slides.dataset.transition) // block scope: makeSlideshow()
+        // set up indicators
+        const indicatorContainer = slides.querySelector('.ms-slide-indicators')
+        if (indicatorContainer !== null) {
+            for (let i = 0; i < images.length; i += 1) {
+                const li = document.createElement('li') // <li></li>
+                indicatorContainer.appendChild(li)
+            }
+        }
+
         slidesInner.style.transition = `${transition}ms`
 
-
-        const slidesWidth = slides.clientWidth // block scope: makeSlideshow()
-        let index = 0 // block scope: makeSlideshow()
-
-        let interval = setInterval(nextSlide, delay)
 
         function nextSlide() {
             index += 1
@@ -57,7 +58,7 @@
 
     } //end makeSlideshow
 
-    const slideshows = document.querySelectorAll('.ms-slideshow') // block scope:  (function() { }))
+    const slideshows = document.querySelectorAll('.ms-slideshow')
     for(let i=0; i < slideshows.length; i += 1) {
         makeSlideshow(slideshows[i]);
     }
