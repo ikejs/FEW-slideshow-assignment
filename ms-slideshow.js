@@ -1,8 +1,5 @@
 (function() {
     function makeSlideshow(slides) {
-        const delay = parseInt(slides.dataset.delay)
-        const transition = parseInt(slides.dataset.transition)
-
         // const slides = document.getElementById(slidesId)
         const slidesInner = slides.querySelector('.slides-inner')
         const images = slidesInner.querySelectorAll('img')
@@ -24,16 +21,28 @@
             })
         }
 
+
         // set up indicators
         const indicatorContainer = slides.querySelector('.ms-slide-indicators')
+        const indicators = []
         if (indicatorContainer !== null) {
             for (let i = 0; i < images.length; i += 1) {
                 const li = document.createElement('li') // <li></li>
                 indicatorContainer.appendChild(li)
+                indicators.push(li)
             }
         }
 
+        // set up timer
+        const delay = parseInt(slides.dataset.delay)
+        const transition = parseInt(slides.dataset.transition)
         slidesInner.style.transition = `${transition}ms`
+
+        const slidesWidth = slides.clientWidth
+
+        let index = 0
+
+        let interval = setInterval(nextSlide, delay)
 
 
         function nextSlide() {
@@ -63,3 +72,13 @@
         makeSlideshow(slideshows[i]);
     }
 })()
+
+
+
+// indicators.forEach(function(el, i) {
+//     if (i === index) {
+//         el.style.backgroundColor = 'rgba(255,255,255,1.0)'
+//     } else {
+//         el.style.backgroundColor = 'rgba(255,255,255,0.5)'
+//     }
+// })
