@@ -31,6 +31,7 @@
                 indicatorContainer.appendChild(li)
                 indicators.push(li)
             }
+            indicators[0].style.backgroundColor = 'rgba(255,255,255,1.0)'
         }
 
         // set up timer
@@ -63,6 +64,13 @@
 
         function showSlide() {
             slidesInner.style.transform = `translate3d(${index * -slidesWidth}px, 0, 0)`
+            indicators.forEach(function(el, i) {
+                if(i === index) {
+                    el.style.backgroundColor = 'rgba(255,255,255,1.0)'
+                } else {
+                    el.style.backgroundColor = 'rgba(255,255,255,0.5)'
+                }
+            })
         }
 
     } //end makeSlideshow
