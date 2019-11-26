@@ -12,15 +12,28 @@
         const slidesWidth = slides.clientWidth // block scope: makeSlideshow()
         let index = 0 // block scope: makeSlideshow()
 
-        setInterval(function() {
-            index += 1 // block scope: function()
+        setInterval(nextSlide, delay)
+
+        function nextSlide() {
+            index += 1
             if(index === images.length) {
-                index = 0 // block scope: function()
+                index = 0
             }
+            showSlide()
+        }
 
+        function prevSlide() {
+            index -= 1
+            if(index < 0) {
+                index = images.length - 1
+            }
+            showSlide()
+        }
+
+        function showSlide() {
             slidesInner.style.transform = `translate3d(${index * -slidesWidth}px, 0, 0)`
+        }
 
-        }, delay)
     } //end makeSlideshow
 
     const slideshows = document.querySelectorAll('.ms-slideshow') // block scope:  (function() { }))
